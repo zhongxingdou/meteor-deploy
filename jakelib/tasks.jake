@@ -462,7 +462,7 @@ namespace('meteor', function() {
     task('installdeps', ['deploy:putremote', 'meteor:moveBundleFolder', 'meteor:deleteBundleFolder', 'meteor:deleteBundleFile'], function () {
 
         action.remote('cd ' + global.program.deployConfig.payload +
-            '/server && npm install fibers@0.6.9 --production', function (exitcode) {
+            '/programs/server && rm -rf fibers && npm install fibers --production', function (exitcode) {
             if (exitcode === 0) {
                 action.success('Dependencies installed');
                 complete();
